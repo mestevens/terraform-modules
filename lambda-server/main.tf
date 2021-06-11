@@ -70,6 +70,12 @@ resource "aws_lambda_function" "lambda" {
   environment {
     variables = var.environment_variables
   }
+
+  lifecycle {
+    ignore_changes = [
+        filename
+    ]
+  }
 }
 
 data "aws_iam_policy_document" "assume_role_policy" {
